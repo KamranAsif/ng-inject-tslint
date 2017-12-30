@@ -1,0 +1,87 @@
+import * as ng from 'angular';
+  
+const myModule = angular.module('Foo', []);
+
+const injectableArrowFn = (injection: any) => {};
+                          ~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+myModule.service('injectableArrowService', injectableArrowFn);
+
+
+const nonInjectableArrowFn = () => {};
+myModule.service('nonInjectableArrowService', nonInjectableArrowFn);
+
+
+function injectableDeclarationFn(injection: any) {};
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+myModule.service('injectableDeclarationService', injectableDeclarationFn);
+
+
+function nonInjectableDeclarationFn() {};
+myModule.service('nonInjectableDeclarationService', nonInjectableDeclarationFn);
+
+
+class InjectableClass {
+  constructor(injection: any) {}
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+  nonConstructor(nonInjection: any) {}
+}
+myModule.service('injectableService', InjectableClass);
+
+
+class NonInjectableClass {
+  constructor() {}
+
+  nonConstructor(nonInjection: any) {}
+}
+myModule.service('nonInjectableService', NonInjectableClass);
+
+
+class NonConstructorClass{
+  nonConstructor(nonInjection: any) {}
+}
+myModule.service('nonConstructorService', NonConstructorClass);
+
+
+myModule.service('bar', /** ngInject */(inject: Function) => {});
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+
+myModule.service('inlineService', class InlineClass {
+  constructor(injection: any) {}
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+});
+
+
+myModule.config((inject: Function) => {});
+                ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.run((inject: Function) => {});
+             ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.animation('animation', (inject: Function) => {});
+                                ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.component('component', (inject: Function) => {});
+                                ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.controller('controller', (inject: Function) => {});
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.decorator('decorator', (inject: Function) => {});
+                                ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.directive('directive', (inject: Function) => {});
+                                ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.factory('factory', (inject: Function) => {});
+                            ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.filter('filter', (inject: Function) => {});
+                          ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.provider('provider', (inject: Function) => {});
+                              ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]
+
+myModule.service('service', (inject: Function) => {});
+                            ~~~~~~~~~~~~~~~~~~~~~~~~ [Missing ngInject comment]

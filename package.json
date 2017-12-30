@@ -1,0 +1,38 @@
+{
+    "name": "ng-inject-tslint",
+    "version": "0.0.1",
+    "description": "ng-inject-tslint",
+    "license": "MIT",
+    "repository": "github.com/KamranAsif/ng-inject-tslint",
+    "author": "Kamran Asif",
+    "scripts": {
+        "check": "gts check",
+        "clean": "gts clean",
+        "compile": "tsc -p .",
+        "fix": "gts fix",
+        "lint": "tslint --type-check --force --fix --project tsconfig.json --format verbose \"src/**/*.ts\"",
+        "posttest": "yarn run check",
+        "prepare": "yarn run compile",
+        "pretest": "yarn run compile",
+        "test": "tslint --test test/rules/**/*",
+        "version": "tsc --version",
+        "watch:test": "chokidar src/**/*.ts test/rules/**/* -c \"yarn run test\" --initial --verbose",
+        "watch": "yarn run compile -- --watch"
+    },
+    "dependencies": {
+        "angular": "^1.6.8",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.2"
+    },
+    "devDependencies": {
+        "@types/angular": "^1.6.39",
+        "@types/node": "^8.0.33",
+        "chokidar-cli": "^1.2.0",
+        "gts": "^0.5.2",
+        "rimraf": "^2.0.0",
+        "tslint-eslint-rules": "^4.1.1"
+    },
+    "engines": {
+        "node": ">=4.0.0"
+    }
+}
