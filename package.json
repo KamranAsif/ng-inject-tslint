@@ -1,9 +1,9 @@
 {
-    "name": "ng-inject-tslint",
+    "name": "tslint-ng-inject",
     "version": "0.0.1",
-    "description": "ng-inject-tslint",
+    "description": "tslint-ng-inject",
     "license": "MIT",
-    "repository": "github.com/KamranAsif/ng-inject-tslint",
+    "repository": "github.com/KamranAsif/tslint-ng-inject",
     "author": "Kamran Asif",
     "scripts": {
         "check": "gts check",
